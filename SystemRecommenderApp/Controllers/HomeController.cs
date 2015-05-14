@@ -23,9 +23,10 @@ namespace SystemRecommenderApp.Controllers
                 {
                     
                 }*/
-                var client = new Facebook.FacebookClient();
+                /*var client = new Facebook.FacebookClient();
                 dynamic me = client.Get("zuck");
-                return View(me);
+                string name = me.first_name;
+                return View(me);*/
                 //return View(user);
             }
 
