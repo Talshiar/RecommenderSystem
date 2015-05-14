@@ -11,18 +11,7 @@ namespace SystemRecommenderApp.Controllers
 {
     public class HomeController : Controller
     {
-        [FacebookAuthorize("email", "user_photos")]
-        public async Task<ActionResult> Index(FacebookContext context)
-        {
-            if (ModelState.IsValid)
-            {
-                var user = await context.Client.GetCurrentUserAsync<MyAppUser>();
-                return View(user);
-            }
-
-            return View("Error");
-        }
-        /*[FacebookAuthorize("friends_birthday", "user_friends")]
+        [FacebookAuthorize(/*"friends_birthday", */"user_friends")]
         public async Task<ActionResult> Index(FacebookContext context)
         {
             ViewBag.AppUrl = GlobalFacebookConfiguration.Configuration.AppUrl;
@@ -33,7 +22,7 @@ namespace SystemRecommenderApp.Controllers
                 {
                     try
                     {
-                        string friendBirthDayString = friend.Birthday;
+                        /*string friendBirthDayString = friend.Birthday;
                         if (String.IsNullOrEmpty(friendBirthDayString))
                         {
                             return int.MaxValue;
@@ -41,7 +30,7 @@ namespace SystemRecommenderApp.Controllers
 
                         var birthDate = DateTime.Parse(friendBirthDayString);
                         friend.Birthday = birthDate.ToString("MMMM d"); // normalize birthday formats
-                        return BirthdayCalculator.GetDaysBeforeBirthday(birthDate);
+                        return BirthdayCalculator.GetDaysBeforeBirthday(birthDate);*/
                         string birthDay = user.Birthday;
                         if (String.IsNullOrEmpty(birthDay))
                         {
@@ -64,7 +53,7 @@ namespace SystemRecommenderApp.Controllers
             return View("Error");
         }
 
-        [FacebookAuthorize("friends_birthday")]
+        /*[FacebookAuthorize("friends_birthday")]
         public async Task<ActionResult> Search(string friendName, FacebookContext context)
         {
             var userFriends = await context.Client.GetCurrentUserFriendsAsync<MyAppUserFriend>();
@@ -73,9 +62,9 @@ namespace SystemRecommenderApp.Controllers
                 userFriends.Where(f => f.Name.ToLowerInvariant().Contains(friendName.ToLowerInvariant())).ToList();
             friendsFound.ForEach(f => f.Birthday = !String.IsNullOrEmpty(f.Birthday) ? DateTime.Parse(f.Birthday).ToString("MMMM d") : "");
             return View(friendsFound);
-        }
+        }*/
 
-        [FacebookAuthorize]
+        /*[FacebookAuthorize]
         public async Task<ActionResult> RecommendGifts(string friendId, FacebookContext context)
         {
             if (!String.IsNullOrEmpty(friendId))
@@ -90,7 +79,7 @@ namespace SystemRecommenderApp.Controllers
             }
 
             return View("Error");
-        }
+        }*/
 
         /*[FacebookAuthorize]
         public ActionResult About()
