@@ -22,18 +22,6 @@
             <td>
                 <label>@friend.Birthday</label>
             </td>
-            <td>
-                <a target="_top" href="@GlobalFacebookConfiguration.Configuration.AppUrl@Url.Action("RecommendGifts", new { friendId = friend.Id })" class="btn btn-success" role="button">
-                    @if (friend.Gender == "male")
-                    {
-                        <span>Buy him a present</span>
-                    }
-                    else
-                    {
-                        <span>Buy her a present</span>
-                    }
-                </a>
-            </td>
         </tr>
     }
 </table>
