@@ -11,7 +11,6 @@ namespace SystemRecommenderApp.Models
         public string Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
-        public string Birthday { get; set; }
 
         //[JsonProperty("picture")] // This renames the property to picture.
         //[FacebookFieldModifier("type(large)")] // This sets the picture size to large.
