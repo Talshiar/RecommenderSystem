@@ -10,7 +10,7 @@ namespace SystemRecommenderApp.Controllers
 {
     public class HomeController : Controller
     {
-        [FacebookAuthorize("email", "user_photos")]
+        [FacebookAuthorize("email", "user_photos", "user_likes")]
         public async Task<ActionResult> Index(FacebookContext context)
         {
             if (ModelState.IsValid)
@@ -27,7 +27,7 @@ namespace SystemRecommenderApp.Controllers
                 dynamic me = client.Get("zuck");
                 string name = me.first_name;
                 return View(me);*/
-                //return View(user);
+                return View(user);
             }
 
             return View("Error");
