@@ -11,6 +11,7 @@ namespace SystemRecommenderApp.Models
         public string Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
+        public FacebookGroupConnection<Like> Likes { get; set; }
 
         [JsonProperty("picture")] // This renames the property to picture.
         [FacebookFieldModifier("type(large)")] // This sets the picture size to large.
@@ -21,5 +22,14 @@ namespace SystemRecommenderApp.Models
 
         [FacebookFieldModifier("limit(16)")] // This sets the size of the photo list to 16, remove it to get all photos.
         public FacebookGroupConnection<FacebookPhoto> Photos { get; set; }
+
+        public class Like
+        {
+            public string Name { get; set; }
+            public string Category { get; set; }
+            public string Id { get; set; }
+
+
+        }
     }
 }
