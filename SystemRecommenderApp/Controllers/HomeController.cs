@@ -11,7 +11,7 @@ namespace SystemRecommenderApp.Controllers
 {
     public class HomeController : Controller
     {
-        [FacebookAuthorize(/*"friends_birthday", */"user_friends")]
+        [FacebookAuthorize("friends_birthday", "user_friends")]
         public async Task<ActionResult> Index(FacebookContext context)
         {
             ViewBag.AppUrl = GlobalFacebookConfiguration.Configuration.AppUrl;
@@ -72,11 +72,11 @@ namespace SystemRecommenderApp.Controllers
             return View("Error");
         }*/
 
-        /*[FacebookAuthorize]
+        [FacebookAuthorize]
         public ActionResult About()
         {
             return View();
-        }*/
+        }
 
         // This action will handle the redirects from FacebookAuthorizeFilter when
         // the app doesn't have all the required permissions specified in the FacebookAuthorizeAttribute.
