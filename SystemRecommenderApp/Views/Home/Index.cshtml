@@ -92,9 +92,9 @@
     });
 
     /*$("#btnSearch").click(function () {
-        //function
     });*/
     function Filtriraj() {
-        alert(btnSelect.id);
+        alert($(this).parents('.btn-group').find('.dropdown-toggle').id);
+        //$(this).parents(".input-group-btn").find('.btn').text($(this).text());
     }
 </script>
