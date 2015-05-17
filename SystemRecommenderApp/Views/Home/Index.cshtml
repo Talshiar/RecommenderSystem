@@ -22,8 +22,8 @@
                     @if (myFriend.Picture != null && myFriend.Picture.Data != null)
                     {
                         <figure>
-                            <img src="@myFriend.Picture.Data.Url"/>
                             <figcaption>Faktor prijateljstva: </figcaption>
+                            <img src="@myFriend.Picture.Data.Url"/>
                         </figure>
                     }
                 </div>
@@ -36,24 +36,7 @@
         }
     </div>
     <div class="right">
-        @*<h4>Photos</h4>
-        @if (Model.Photos != null && Model.Photos.Data != null && Model.Photos.Data.Count > 0)
-        {
-            foreach (var photo in @Model.Photos.Data)
-            {
-            <a href="@photo.Link" target="_blank">
-                <div class="photoTile">
-                    <img src="@photo.ThumbnailUrl" />
-                </div>
-            </a>
-            }
-        }
-        else
-        {
-            <p>No photo available.</p>
-        }*@
         <h4>Odaberi vrstu sadržaja za koje tražiš preporuku:</h4>
-        <!-- Search box Start -->
         <form>
             <div class="well carousel-search hidden-sm">
                 <div class="btn-group">
@@ -71,7 +54,6 @@
                 </div>
             </div>
         </form>
-        <!-- Search box End -->
         @if (Model.Likes != null && Model.Likes.Data != null && Model.Photos.Data.Count > 0)
         {
             foreach (var like in @Model.Likes.Data)
