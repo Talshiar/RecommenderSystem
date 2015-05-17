@@ -11,7 +11,7 @@
 
 <article id="content">
     <div class="left">
-        <h4>Prijatelji koji koriste aplikaciju i faktor prijateljstva:</h4>
+        <h4>Prijatelji koji koriste aplikaciju:</h4>
         @if (Model.Friends != null && Model.Friends.Data != null && Model.Friends.Data.Count > 0)
         {
             foreach (var myFriend in @Model.Friends.Data)
@@ -22,7 +22,7 @@
                     @if (myFriend.Picture != null && myFriend.Picture.Data != null)
                     {
                         <figure>
-                            <img src="@myFriend.Picture.Data.Url" alt="missing" />
+                            <img src="@myFriend.Picture.Data.Url"/>
                             <figcaption>Faktor prijateljstva: @myFriend.FriendFactor</figcaption>
                         </figure>
                     }
