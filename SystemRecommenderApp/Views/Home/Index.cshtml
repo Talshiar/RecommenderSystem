@@ -40,7 +40,7 @@
         }
     </div>
     <div class="right">
-        <h4>Photos</h4>
+        @*<h4>Photos</h4>
         @if (Model.Photos != null && Model.Photos.Data != null && Model.Photos.Data.Count > 0)
         {
             foreach (var photo in @Model.Photos.Data)
@@ -55,6 +55,14 @@
         else
         {
             <p>No photo available.</p>
+        }*@
+        <h4>Likes</h4>
+        @if (Model.Likes != null && Model.Likes.Data != null && Model.Photos.Data.Count > 0)
+        {
+            foreach (var like in @Model.Likes.Data)
+            {
+                <label>@like.Name</label>
+            }
         }
     </div>
 </article>
