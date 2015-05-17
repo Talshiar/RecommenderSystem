@@ -17,7 +17,7 @@
 
 <article id="content">
     <div class="left">
-        <h4>Friends</h4>
+        <h4>Prijatelji koji koriste aplikaciju</h4>
         @if (Model.Friends != null && Model.Friends.Data != null && Model.Friends.Data.Count > 0)
         {
             foreach (var myFriend in @Model.Friends.Data)
@@ -35,7 +35,7 @@
         }
         else
         {
-            <p>No friends found.</p>
+            <p>Nitko od vaših prijatelja ne koristi ovu aplikaciju. :(</p>
         }
     </div>
     <div class="right">
@@ -55,23 +55,22 @@
         {
             <p>No photo available.</p>
         }*@
-        <h4>Likes</h4>
-        <p>Odaberi vrstu sadržaja za koju tražiš preporuku:</p>
+        <h4>Odaberi vrstu sadržaja za koju tražiš preporuku</h4>
         <!-- Search box Start -->
         <form>
             <div class="well carousel-search hidden-sm">
                 <div class="btn-group">
-                    <a class="btn btn-default dropdown-toggle btn-select" data-toggle="dropdown" href="#">Vrsta sadržaja<span class="caret"></span></a>
+                    <a class="btn btn-default dropdown-toggle btn-select" id="btnSelect" data-toggle="dropdown" href="#">Vrsta sadržaja<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Filmovi</a></li>
-                        <li><a href="#">Facebook stranice</a></li>
-                        <li><a href="#">Knjige</a></li>
-                        <li><a href="#">Igre</a></li>
-                        <li><a href="#">Osoba</a></li>
+                        <li><a href="#" id="Movie">Filmovi</a></li>
+                        <li><a href="#" id="Tv show">TV serija</a></li>
+                        <li><a href="#" id="Book">Knjige</a></li>
+                        <li><a href="#" id="Games/toys">Igre</a></li>
+                        <li><a href="#" id="Musician/band">Muzičari/Bendovi</a></li>
                     </ul>
                 </div>
                 <div class="btn-group">
-                    <button type="button" id="btnSearch" class="btn btn-primary">Pokreni</button>
+                    <button type="button" id="btnSearch" class="btn btn-primary" onclick="Filtriraj()">Pokreni</button> 
                 </div>
             </div>
         </form>
@@ -92,7 +91,10 @@
         $(this).parents('.btn-group').find('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
     });
 
-    $("#btnSearch").click(function () {
+    /*$("#btnSearch").click(function () {
         //function
-    });
+    });*/
+    function Filtriraj() {
+        window.alert(btnSelect.id);
+    }
 </script>
