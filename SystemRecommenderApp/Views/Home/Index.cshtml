@@ -22,8 +22,8 @@
                     @if (myFriend.Picture != null && myFriend.Picture.Data != null)
                     {
                         <figure>
+                            <img src="@myFriend.Picture.Data.Url" height="120" width="120" />
                             <figcaption>Faktor prijateljstva: </figcaption>
-                            <img src="@myFriend.Picture.Data.Url"/>
                         </figure>
                     }
                 </div>
