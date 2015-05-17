@@ -11,6 +11,7 @@ namespace SystemRecommenderApp.Models
         public string Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
+        [FacebookFieldModifier("limit(100)")]
         public FacebookGroupConnection<Like> Likes { get; set; }
 
         [JsonProperty("picture")] // This renames the property to picture.
