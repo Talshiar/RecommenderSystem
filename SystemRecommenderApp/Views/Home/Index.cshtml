@@ -6,7 +6,7 @@
 }
 
 <article class="intro">
-    <h4>Zatražite preporuke sadržaja u par sekundi. Preporuke su bazirane na interesima vaših prijatelja.</h4>
+    <h4>Zatražite preporuke sadržaja kategorički. Preporuke su bazirane na interesima vaših prijatelja.</h4>
 </article>
 
 <article id="content">
@@ -21,10 +21,8 @@
                     <label>@myFriend.Name</label>
                     @if (myFriend.Picture != null && myFriend.Picture.Data != null)
                     {
-                        <figure>
-                            <img src="@myFriend.Picture.Data.Url" height="120" width="120" />
-                            <figcaption>Faktor prijateljstva: </figcaption>
-                        </figure>
+                            <img src="@myFriend.Picture.Data.Url"/>
+                            <p>Faktor prijateljstva:</p>
                     }
                 </div>
             </a>
@@ -36,7 +34,7 @@
         }
     </div>
     <div class="right">
-        <h4>Odaberi vrstu sadržaja za koje tražiš preporuku:</h4>
+        <h4>Odaberite vrstu sadržaja za preporučivanje:</h4>
         <form>
             <div class="well carousel-search hidden-sm">
                 <div class="btn-group">
