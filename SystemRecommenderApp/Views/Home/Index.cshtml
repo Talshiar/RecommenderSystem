@@ -57,6 +57,26 @@
             <p>No photo available.</p>
         }*@
         <h4>Likes</h4>
+        <p>Odaberi vrstu sadržaja za koju tražiš preporuku:</p>
+        <!-- Search box Start -->
+        <form>
+            <div class="well carousel-search hidden-sm">
+                <div class="btn-group">
+                    <a class="btn btn-default dropdown-toggle btn-select" data-toggle="dropdown" href="#">Vrsta sadržaja<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Filmovi</a></li>
+                        <li><a href="#">Facebook stranice</a></li>
+                        <li><a href="#">Knjige</a></li>
+                        <li><a href="#">Igre</a></li>
+                        <li><a href="#">Osoba</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <button type="button" id="btnSearch" class="btn btn-primary">Pokreni</button>
+                </div>
+            </div>
+        </form>
+        <!-- Search box End -->
         @if (Model.Likes != null && Model.Likes.Data != null && Model.Photos.Data.Count > 0)
         {
             foreach (var like in @Model.Likes.Data)
