@@ -6,18 +6,12 @@
 }
 
 <article class="intro">
-    <span id="profilePicture">
-        @if (Model.ProfilePicture != null && Model.ProfilePicture.Data != null)
-        {
-            <img src="@Model.ProfilePicture.Data.Url" />
-        }
-    </span>
     <h4>Zatražite preporuke sadržaja u par sekundi. Preporuke su bazirane na interesima vaših prijatelja.</h4>
 </article>
 
 <article id="content">
     <div class="left">
-        <h4>Prijatelji koji koriste aplikaciju</h4>
+        <h4>Prijatelji koji koriste aplikaciju i faktor prijateljstva:</h4>
         @if (Model.Friends != null && Model.Friends.Data != null && Model.Friends.Data.Count > 0)
         {
             foreach (var myFriend in @Model.Friends.Data)
@@ -27,7 +21,10 @@
                     <label>@myFriend.Name</label>
                     @if (myFriend.Picture != null && myFriend.Picture.Data != null)
                     {
-                        <img src="@myFriend.Picture.Data.Url" />
+                        <figure>
+                            <img src="@myFriend.Picture.Data.Url" alt="missing" />
+                            <figcaption>Faktor prijateljstva: @myFriend.FriendFactor</figcaption>
+                        </figure>
                     }
                 </div>
             </a>
@@ -55,7 +52,7 @@
         {
             <p>No photo available.</p>
         }*@
-        <h4>Odaberi vrstu sadržaja za koju tražiš preporuku</h4>
+        <h4>Odaberi vrstu sadržaja za koje tražiš preporuku:</h4>
         <!-- Search box Start -->
         <form>
             <div class="well carousel-search hidden-sm">
@@ -70,7 +67,7 @@
                     </ul>
                 </div>
                 <div class="btn-group">
-                    <button type="button" id="btnSearch" class="btn btn-primary"@*onclick="Filtriraj()"*@>Pokreni</button> 
+                    <button type="button" id="btnSearch" class="btn btn-primary">Pokreni</button> 
                 </div>
             </div>
         </form>
@@ -92,9 +89,6 @@
     });
 
     $("#btnSearch").click(function () {
-        alert($('.btn-select').text());
+        alert($('.btn-select').text);
     });
-    /*function Filtriraj() {
-        alert($('.btn-select').id());
-    }*/
 </script>
