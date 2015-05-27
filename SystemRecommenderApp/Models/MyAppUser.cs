@@ -23,6 +23,13 @@ namespace SystemRecommenderApp.Models
 
         [FacebookFieldModifier("limit(16)")] // This sets the size of the photo list to 16, remove it to get all photos.
         public FacebookGroupConnection<FacebookPhoto> Photos { get; set; }
+        public FacebookGroupConnection<Movies> Movies { get; set; }
+
+        public class Movies
+        {
+            public string Name { get; set; }
+            public string Id { get; set; }
+        }
 
         public class Like
         {

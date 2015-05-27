@@ -54,13 +54,15 @@
                 </div>
             </div>
         </form>
-        @if (Model.Likes != null && Model.Likes.Data != null && Model.Photos.Data.Count > 0)
+        @*@if (Model.Likes != null && Model.Likes.Data != null && Model.Photos.Data.Count > 0)
         {
             foreach (var like in @Model.Likes.Data)
             {
                 <p>@like.Name, @like.Category</p>
             }
-        }
+        }*@
+        
+
     </div>
 </article>
 <script>
@@ -72,5 +74,10 @@
 
     $("#btnSearch").click(function () {
         alert($('.btn-select').text());
+    });
+
+    //dropdown i button pokreni
+    $('#btnSearch').click(function (event) {
+        alert($('#btnSelect option:selected').text());
     });
 </script>
