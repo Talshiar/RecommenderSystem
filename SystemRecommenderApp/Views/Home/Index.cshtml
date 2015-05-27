@@ -58,10 +58,10 @@
                 <p>@like.Name, @like.Category</p>
             }
         }*@
-        @foreach (var like in @Model.Movie.Data)
+        @*@foreach (var like in @Model.Movie.Data)
         {
-            @Html.DisplayFor(ModelItem => @like.Name)
-        }
+            @Html.DisplayFor(ModelItem => like.Name)
+        }*@
         
 
     </div>
@@ -78,7 +78,7 @@
     });
 
     //dropdown i button pokreni
-    $('#btnSearch').click(function (event) {
+    //$('#btnSearch').click(function (event) {
         
-    });
+    //});
 </script>
