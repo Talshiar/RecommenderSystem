@@ -46,7 +46,7 @@ namespace SystemRecommenderApp.Controllers
             return View("Error");
         }
 
-        [System.Web.Services.WebMethod]
-        public static 
+        //[System.Web.Services.WebMethod]
+        //public static 
     }
 }
