@@ -14,30 +14,50 @@ namespace SystemRecommenderApp.Models
         [FacebookFieldModifier("limit(100)")]
         public FacebookGroupConnection<Like> Likes { get; set; }
 
-        [JsonProperty("picture")] // This renames the property to picture.
-        [FacebookFieldModifier("type(large)")] // This sets the picture size to large.
+        [JsonProperty("picture")]
+        [FacebookFieldModifier("type(large)")]
         public FacebookConnection<FacebookPicture> ProfilePicture { get; set; }
 
-        [FacebookFieldModifier("limit(8)")] // This sets the size of the friend list to 8, remove it to get all friends.
+        [FacebookFieldModifier("limit(8)")]
         public FacebookGroupConnection<MyAppUserFriend> Friends { get; set; }
 
-        [FacebookFieldModifier("limit(16)")] // This sets the size of the photo list to 16, remove it to get all photos.
+        [FacebookFieldModifier("limit(16)")]
         public FacebookGroupConnection<FacebookPhoto> Photos { get; set; }
-        public FacebookGroupConnection<Movies> Movie { get; set; }
+        public FacebookGroupConnection<Movie> Movies { get; set; }
+        public FacebookGroupConnection<Book> Books { get; set; }
+        public FacebookGroupConnection<TV> Television { get; set; }
+        public FacebookGroupConnection<Bands> Music { get; set; } 
 
-        public class Movies
+        public class Bands
         {
             public string Name { get; set; }
             public string Id { get; set; }
+            public string Link { get; set; }
         }
-
+        public class Movie
+        {
+            public string Name { get; set; }
+            public string Id { get; set; }
+            public string Link { get; set; }
+        }
         public class Like
         {
             public string Name { get; set; }
             public string Category { get; set; }
             public string Id { get; set; }
-
-
+            public string Link { get; set; }
+        }
+        public class Book
+        {
+            public string Name { get; set; }
+            public string Id { get; set; }
+            public string Link { get; set; }
+        }
+        public class TV
+        {
+            public string Name { get; set; }
+            public string Id { get; set; }
+            public string Link { get; set; }
         }
     }
 }

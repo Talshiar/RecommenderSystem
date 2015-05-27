@@ -37,13 +37,12 @@
         <form>
             <div class="well carousel-search hidden-sm">
                 <div class="btn-group">
-                    <a class="btn btn-default dropdown-toggle btn-select" id="btnSelect" data-toggle="dropdown" href="#">Vrsta sadržaja<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#" id="Movie">Filmovi</a></li>
-                        <li><a href="#" id="Tv show">TV serija</a></li>
-                        <li><a href="#" id="Book">Knjige</a></li>
-                        <li><a href="#" id="Games/toys">Igre</a></li>
-                        <li><a href="#" id="Musician/band">Muzičari/Bendovi</a></li>
+                    <a class="btn btn-default dropdown-toggle btn-select"data-toggle="dropdown" href="#">Vrsta sadržaja<span class="caret"></span></a>
+                    <ul class="dropdown-menu" id="btnSelect">
+                        <li><a href="#" id="Movies">Filmovi</a></li>
+                        <li><a href="#" id="Television">TV serija</a></li>
+                        <li><a href="#" id="Books">Knjige</a></li>
+                        <li><a href="#" id="Music">Muzičari/Bendovi</a></li>
                     </ul>
                 </div>
                 <div class="btn-group">
@@ -51,17 +50,21 @@
                 </div>
             </div>
         </form>
-        @*@if (Model.Likes != null && Model.Likes.Data != null && Model.Photos.Data.Count > 0)
+        <div id="directions_panel" style="margin:20px;"></div>
+        @*@if (Model.Likes != null && Model.Likes.Data != null && Model.Likes.Data.Count > 0)
         {
             foreach (var like in @Model.Likes.Data)
             {
                 <p>@like.Name, @like.Category</p>
             }
         }*@
-        @*@foreach (var like in @Model.Movie.Data)
+        @if (Model.Television != null && Model.Television.Data != null && Model.Television.Data.Count > 0)
         {
-            @Html.DisplayFor(ModelItem => like.Name)
-        }*@
+            foreach (var e in @Model.Television.Data)
+            {
+                <a href=@e.Link>@e.Name</a><br/>
+            }
+        }
         
 
     </div>
@@ -74,11 +77,24 @@
     });
 
     $("#btnSearch").click(function () {
-        alert($('.btn-select').text());
+        var recommendationPanel = document.getElementById("directions_panel");
+        recommendationPanel.innerHTML = '';
+        var category = $('.btn-select').text();
+        switch(category) {
+            case "Filmovi ":
+
+                break;
+            case "TV serija ":
+                
+                break;
+            case "Knjige ":
+
+                break;
+            case "Muzičari/Bendovi ":
+
+                break;
+
+        }
     });
 
-    //dropdown i button pokreni
-    //$('#btnSearch').click(function (event) {
-        
-    //});
 </script>

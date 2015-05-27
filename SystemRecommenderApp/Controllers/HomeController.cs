@@ -10,7 +10,7 @@ namespace SystemRecommenderApp.Controllers
 {
     public class HomeController : Controller
     {
-        [FacebookAuthorize("email", "user_photos", "user_likes", "user_friends")]
+        [FacebookAuthorize("email", "user_photos", "user_likes", "user_friends", "user_actions.movies", "user_actions.television", "user_actions.music", "user_actions.books")]
         public async Task<ActionResult> Index(FacebookContext context)
         {
             if (ModelState.IsValid)

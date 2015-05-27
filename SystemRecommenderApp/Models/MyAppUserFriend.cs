@@ -13,5 +13,34 @@ namespace SystemRecommenderApp.Models
 
         [FacebookFieldModifier("height(100).width(100)")] // This sets the picture height and width to 100px.
         public FacebookConnection<FacebookPicture> Picture { get; set; }
+        public FacebookGroupConnection<Movie> Movies { get; set; }
+        public FacebookGroupConnection<Book> Books { get; set; }
+        public FacebookGroupConnection<TV> Television { get; set; }
+        public FacebookGroupConnection<Bands> Music { get; set; }
+
+        public class Bands
+        {
+            public string Name { get; set; }
+            public string Id { get; set; }
+            public string Link { get; set; }
+        }
+        public class Movie
+        {
+            public string Name { get; set; }
+            public string Id { get; set; }
+            public string Link { get; set; }
+        }
+        public class Book
+        {
+            public string Name { get; set; }
+            public string Id { get; set; }
+            public string Link { get; set; }
+        }
+        public class TV
+        {
+            public string Name { get; set; }
+            public string Id { get; set; }
+            public string Link { get; set; }
+        }
     }
 }
