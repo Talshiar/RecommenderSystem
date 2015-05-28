@@ -20,23 +20,23 @@ namespace SystemRecommenderApp.Controllers
             if (ModelState.IsValid)
             {
                 var user = await context.Client.GetCurrentUserAsync<MyAppUser>();
-                var client = new Facebook.FacebookClient(context.Client.AccessToken);
-                foreach (var f in user.Friends.Data)
-                {
-                    JsonObject data = (JsonObject)client.Get("/" + f.Id + "?fields=context.fields(mutual_friends)");
-                    string dataS = data.ToString();
-                    var jobject = JObject.Parse(dataS);
-                    var facebookJson = jobject.ToObject<FacebookJson>();
-                    int mFriends = facebookJson.Context.MutualFriends.Summary.TotalCount;
+                //var client = new Facebook.FacebookClient(context.Client.AccessToken);
+                //foreach (var f in user.Friends.Data)
+                //{
+                //    JsonObject data = (JsonObject)client.Get("/" + f.Id + "?fields=context.fields(mutual_friends)");
+                //    string dataS = data.ToString();
+                //    var jobject = JObject.Parse(dataS);
+                //    var facebookJson = jobject.ToObject<FacebookJson>();
+                //    int mFriends = facebookJson.Context.MutualFriends.Summary.TotalCount;
 
-                    data = (JsonObject)client.Get("/" + f.Id + "?fields=context.fields(mutual_likes)");
-                    dataS = data.ToString();
-                    jobject = JObject.Parse(dataS);
-                    facebookJson = jobject.ToObject<FacebookJson>();
-                    int mLikes = facebookJson.Context.MutualLikes.Summary.TotalCount;
-                    int factor = mFriends + mLikes*2;
-                    user.SetFactor(f.Id, factor);
-                }
+                //    data = (JsonObject)client.Get("/" + f.Id + "?fields=context.fields(mutual_likes)");
+                //    dataS = data.ToString();
+                //    jobject = JObject.Parse(dataS);
+                //    facebookJson = jobject.ToObject<FacebookJson>();
+                //    int mLikes = facebookJson.Context.MutualLikes.Summary.TotalCount;
+                //    int factor = mFriends + mLikes*2;
+                //    user.SetFactor(f.Id, factor);
+                //}
 
           
                 return View(user);

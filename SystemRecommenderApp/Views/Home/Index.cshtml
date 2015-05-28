@@ -16,7 +16,7 @@
             {
                 <a href="@myFriend.Link" target="_blank">
                         <div class="photoTile">
-                            <label>@myFriend.Name @Model.GetFactor(myFriend.Id)</label>
+                            <label>@myFriend.Name</label>
                             @if (myFriend.Picture != null && myFriend.Picture.Data != null)
                             {
                                 <img src="@myFriend.Picture.Data.Url" />
@@ -65,7 +65,7 @@
         recommendationPanel.innerHTML += '<a href="' + link + '">' + name + '</a><br/>';
     }
 
-    $("#btnSearch").click(function () {
+    @*$("#btnSearch").click(function () {
         recommendationPanel.innerHTML = '';
         var category = $('.btn-select').text();
         switch(category) {
@@ -91,6 +91,6 @@
                 break;
 
         }
-    });
+    });*@
 
 </script>

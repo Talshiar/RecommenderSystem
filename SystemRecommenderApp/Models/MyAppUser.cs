@@ -13,31 +13,31 @@ namespace SystemRecommenderApp.Models
         public string Name { get; set; }
         public string Email { get; set; }
 
-        private Dictionary<string, int> FriendsFactor = new Dictionary<string, int>();
+        //private Dictionary<string, int> FriendsFactor = new Dictionary<string, int>();
 
-        public void SetFactor(string key, int value)
-        {
-            if (FriendsFactor.ContainsKey(key))
-            {
-                FriendsFactor[key] = value;
-            }
-            else
-            {
-                FriendsFactor.Add(key, value);
-            }
-        }
+        //public void SetFactor(string key, int value)
+        //{
+        //    if (FriendsFactor.ContainsKey(key))
+        //    {
+        //        FriendsFactor[key] = value;
+        //    }
+        //    else
+        //    {
+        //        FriendsFactor.Add(key, value);
+        //    }
+        //}
 
-        public int GetFactor(string key)
-        {
-            int result = 0;
+        //public int GetFactor(string key)
+        //{
+        //    int result = 0;
 
-            if (FriendsFactor.ContainsKey(key))
-            {
-                result = FriendsFactor[key];
-            }
+        //    if (FriendsFactor.ContainsKey(key))
+        //    {
+        //        result = FriendsFactor[key];
+        //    }
 
-            return result;
-        }
+        //    return result;
+        //}
         [FacebookFieldModifier("limit(100)")]
         public FacebookGroupConnection<Like> Likes { get; set; }
 
@@ -52,16 +52,8 @@ namespace SystemRecommenderApp.Models
         public FacebookGroupConnection<FacebookPhoto> Photos { get; set; }
         public FacebookGroupConnection<Movie> Movies { get; set; }
         public FacebookGroupConnection<Book> Books { get; set; }
-        public FacebookGroupConnection<TV> Television { get; set; }
+        //public FacebookGroupConnection<TV> Television { get; set; }
         public FacebookGroupConnection<Bands> Music { get; set; }
-
-        [FacebookFieldModifier("limit(20)")]
-        public FacebookGroupConnection<Post> Feed { get; set; }
-
-        public class Post
-        {
-            public string Id { get; set; }
-        }
 
     }
 }
