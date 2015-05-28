@@ -78,7 +78,7 @@
                 @foreach (var item in Model.Television.Data) {
                     @:dispFunc('@item.Name', '@item.Link');
                 }
-                break;
+                break;*@
             case "Knjige ":
                 @foreach (var item in Model.Books.Data) {
                     @:dispFunc('@item.Name', '@item.Link');
@@ -88,7 +88,7 @@
                 @foreach (var item in Model.Music.Data) {
                     @:dispFunc('@item.Name', '@item.Link');
                 }
-                break;*@
+                break;
 
         }
     });
