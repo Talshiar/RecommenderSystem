@@ -16,7 +16,7 @@
             {
                 <a href="@myFriend.Link" target="_blank">
                         <div class="photoTile">
-                            <label>@myFriend.Name</label>
+                            <label>@myFriend.Name @Model.GetFactor(myFriend.Id)</label>
                             @if (myFriend.Picture != null && myFriend.Picture.Data != null)
                             {
                                 <img src="@myFriend.Picture.Data.Url" />
