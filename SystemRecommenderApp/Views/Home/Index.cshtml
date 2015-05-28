@@ -5,22 +5,18 @@
     ViewBag.Title = "Home Page";
 }
 
-<article class="intro">
-    <h4>Zatražite preporuke sadržaja kategorički. Preporuke su bazirane na interesima vaših prijatelja.</h4>
-</article>
-
 <article id="content">
+    <h4>Zatražite preporuke sadržaja po kategorijama. Preporuke su bazirane na interesima vaših najboljih prijatelja na Facebook-u.</h4>
     <div class="left">
-        <h4>Prijatelji koji koriste aplikaciju:</h4>
+        <h4>Prijatelji koji koriste aplikaciju, pored imena se nalazi procjenjeni faktor zajedničkih interesa:</h4>
         
         @if (Model.Friends != null && Model.Friends.Data != null && Model.Friends.Data.Count > 0)
         {
             foreach (var myFriend in @Model.Friends.Data)
             {
-
                 <a href="@myFriend.Link" target="_blank">
                         <div class="photoTile">
-                            <label>@myFriend.Name</label>
+                            <label>@myFriend.Name @Model.GetFactor(myFriend.Id)</label>
                             @if (myFriend.Picture != null && myFriend.Picture.Data != null)
                             {
                                 <img src="@myFriend.Picture.Data.Url" />
@@ -31,7 +27,7 @@
         }
         else
         {
-            <p>Nitko od vaših prijatelja ne koristi ovu aplikaciju. :(</p>
+            <p>Nitko od vaših prijatelja ne koristi ovu aplikaciju.</p>
         }
     </div>
     <div class="right">
@@ -53,20 +49,6 @@
             </div>
         </form>
         <div id="directions_panel" style="margin:20px;"></div>
-        @*@if (Model.Books != null && Model.Books.Data != null && Model.Books.Data.Count > 0)
-        {
-            foreach (var like in @Model.Books.Data)
-            {
-                <p>@like.Name</p>
-            }
-        }*@
-        @*@if (Model.Feed != null && Model.Feed.Data != null && Model.Feed.Data.Count > 0)
-        {
-            foreach (var e in @Model.Feed.Data)
-            {
-                <p>e.Id</p>
-            }
-        }*@
         
 
     </div>
@@ -90,12 +72,12 @@
             case "Filmovi ":
                 @foreach (var item in Model.Movies.Data) {
                     @:dispFunc('@item.Name', '@item.Link');
-                                                    }
+                }
                 break;
             case "TV serija ":
                 @foreach (var item in Model.Television.Data) {
                     @:dispFunc('@item.Name', '@item.Link');
-                                }
+                }
                 break;
             case "Knjige ":
                 @foreach (var item in Model.Books.Data) {

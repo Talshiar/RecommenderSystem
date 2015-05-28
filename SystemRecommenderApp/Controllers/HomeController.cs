@@ -5,6 +5,10 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Facebook;
 using Microsoft.AspNet.Facebook.Client;
 using SystemRecommenderApp.Models;
+using Facebook;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 
 namespace SystemRecommenderApp.Controllers
 {
@@ -16,9 +20,25 @@ namespace SystemRecommenderApp.Controllers
             if (ModelState.IsValid)
             {
                 var user = await context.Client.GetCurrentUserAsync<MyAppUser>();
+                var client = new Facebook.FacebookClient(context.Client.AccessToken);
+                foreach (var f in user.Friends.Data)
+                {
+                    JsonObject data = (JsonObject)client.Get("/" + f.Id + "?fields=context.fields(mutual_friends)");
+                    string dataS = data.ToString();
+                    var jobject = JObject.Parse(dataS);
+                    var facebookJson = jobject.ToObject<FacebookJson>();
+                    int mFriends = facebookJson.Context.MutualFriends.Summary.TotalCount;
 
-                var fb = new Facebook.FacebookClient(context.Client.AccessToken);
-                dynamic us = fb.Get("me/tagged");
+                    data = (JsonObject)client.Get("/" + f.Id + "?fields=context.fields(mutual_likes)");
+                    dataS = data.ToString();
+                    jobject = JObject.Parse(dataS);
+                    facebookJson = jobject.ToObject<FacebookJson>();
+                    int mLikes = facebookJson.Context.MutualLikes.Summary.TotalCount;
+                    int factor = mFriends + mLikes*2;
+                    user.SetFactor(f.Id, factor);
+                }
+
+          
                 return View(user);
             }
 
@@ -37,6 +57,8 @@ namespace SystemRecommenderApp.Controllers
 
             return View("Error");
         }
+
+
 
         //[System.Web.Services.WebMethod]
         //public static 

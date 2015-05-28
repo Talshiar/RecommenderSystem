@@ -9,6 +9,8 @@ namespace SystemRecommenderApp.Models
     {
         public string Name { get; set; }
         public string Link { get; set; }
+        public string Id { get; set; }
+
 
 
         [FacebookFieldModifier("height(100).width(100)")] // This sets the picture height and width to 100px.
