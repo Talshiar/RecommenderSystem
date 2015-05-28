@@ -72,13 +72,13 @@
         var category = $('.btn-select').text();
         switch (category) {
             case "Filmovi ":
-                @if (Model.Friends.Data != null && Model.Friends.Data != null && Model.Friends.Data.Count > 0)
+                @if (Model.Friends != null && Model.Friends.Data != null && Model.Friends.Data.Count > 0)
                 {
                     foreach (var f in Model.Friends.Data)
                     {
-                        if (f.Id == Model.GetFriend())
+                        if (f.Id == Model.GetFriend() && f.Movies != null && f.Movies.Data != null && f.Movies.Data.Count > 0)
                         {
-                            @*int i = 0;
+                            int i = 0;
                             int ran = rnd.Next(0, f.Movies.Data.Count);
                             foreach (var item in f.Movies.Data) 
                             {
@@ -86,13 +86,13 @@
                                     @:dispFunc('@item.Name', '@item.Link');
                                     }
                                 i++;
-                            }*@
+                            }
                         }
                     }
                 }
                 break;
             @*case "TV serija ":
-                @if (Model.Friends.Data != null && Model.Friends.Data != null && Model.Friends.Data.Count > 0)
+                @if (Model.Friends != null && Model.Friends.Data != null && Model.Friends.Data.Count > 0)
                 {
                     foreach (var f in Model.Friends.Data)
                     {
@@ -112,7 +112,7 @@
                 }
                 break;
             case "Knjige ":
-                @if (Model.Friends.Data != null && Model.Friends.Data != null && Model.Friends.Data.Count > 0)
+                @if (Model.Friends != null && Model.Friends.Data != null && Model.Friends.Data.Count > 0)
                 {
                     foreach (var f in Model.Friends.Data)
                     {
