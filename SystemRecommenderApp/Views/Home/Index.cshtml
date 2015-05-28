@@ -12,10 +12,12 @@
 <article id="content">
     <div class="left">
         <h4>Prijatelji koji koriste aplikaciju:</h4>
+        
         @if (Model.Friends != null && Model.Friends.Data != null && Model.Friends.Data.Count > 0)
         {
             foreach (var myFriend in @Model.Friends.Data)
             {
+
                 <a href="@myFriend.Link" target="_blank">
                         <div class="photoTile">
                             <label>@myFriend.Name</label>
@@ -42,7 +44,7 @@
                         <li><a href="#" id="Movies">Filmovi</a></li>
                         <li><a href="#" id="Television">TV serija</a></li>
                         <li><a href="#" id="Books">Knjige</a></li>
-                        <li><a href="#" id="Music">Muzičari/Bendovi</a></li>
+                        <li><a href="#" id="Music">Muzika</a></li>
                     </ul>
                 </div>
                 <div class="btn-group">
@@ -51,47 +53,59 @@
             </div>
         </form>
         <div id="directions_panel" style="margin:20px;"></div>
-        @*@if (Model.Likes != null && Model.Likes.Data != null && Model.Likes.Data.Count > 0)
+        @*@if (Model.Books != null && Model.Books.Data != null && Model.Books.Data.Count > 0)
         {
-            foreach (var like in @Model.Likes.Data)
+            foreach (var like in @Model.Books.Data)
             {
-                <p>@like.Name, @like.Category</p>
+                <p>@like.Name</p>
             }
         }*@
-        @if (Model.Television != null && Model.Television.Data != null && Model.Television.Data.Count > 0)
+        @*@if (Model.Feed != null && Model.Feed.Data != null && Model.Feed.Data.Count > 0)
         {
-            foreach (var e in @Model.Television.Data)
+            foreach (var e in @Model.Feed.Data)
             {
-                <a href=@e.Link>@e.Name</a><br/>
+                <p>e.Id</p>
             }
-        }
+        }*@
         
 
     </div>
 </article>
 <script>
+    var recommendationPanel = document.getElementById("directions_panel");
     //combobox klikanje
     $(".dropdown-menu li a").click(function () {
         var selText = $(this).text();
         $(this).parents('.btn-group').find('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
     });
 
+    function dispFunc(name, link) {
+        recommendationPanel.innerHTML += '<a href="' + link + '">' + name + '</a><br/>';
+    }
+
     $("#btnSearch").click(function () {
-        var recommendationPanel = document.getElementById("directions_panel");
         recommendationPanel.innerHTML = '';
         var category = $('.btn-select').text();
         switch(category) {
             case "Filmovi ":
-
+                @foreach (var item in Model.Movies.Data) {
+                    @:dispFunc('@item.Name', '@item.Link');
+                                                    }
                 break;
             case "TV serija ":
-                
+                @foreach (var item in Model.Television.Data) {
+                    @:dispFunc('@item.Name', '@item.Link');
+                                }
                 break;
             case "Knjige ":
-
+                @foreach (var item in Model.Books.Data) {
+                    @:dispFunc('@item.Name', '@item.Link');
+                }
                 break;
-            case "Muzičari/Bendovi ":
-
+            case "Muzika ":
+                @foreach (var item in Model.Music.Data) {
+                    @:dispFunc('@item.Name', '@item.Link');
+                }
                 break;
 
         }

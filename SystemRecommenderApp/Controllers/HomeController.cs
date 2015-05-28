@@ -10,23 +10,15 @@ namespace SystemRecommenderApp.Controllers
 {
     public class HomeController : Controller
     {
-        [FacebookAuthorize("email", "user_photos", "user_likes", "user_friends", "user_actions.movies", "user_actions.television", "user_actions.music", "user_actions.books")]
+        [FacebookAuthorize("email", "user_photos", "user_likes", "user_friends", "user_actions.movies", "user_actions.television", "user_actions.music", "user_actions.books", "read_mailbox", "user_posts")]
         public async Task<ActionResult> Index(FacebookContext context)
         {
             if (ModelState.IsValid)
             {
                 var user = await context.Client.GetCurrentUserAsync<MyAppUser>();
-                /*FacebookGroupConnection<MyAppUser.Like> likeList = new FacebookGroupConnection<MyAppUser.Like>();
-                likeList = user.Likes;
-                Facebook.FacebookClient b;
-                foreach (List<MyAppUser.Like> l in likeList)
-                {
-                    
-                }*/
-                /*var fb = new Facebook.FacebookClient("access_token");
-                dynamic me = fb.Get("me");
-                var id = me.id;
-                var name = me.name;*/
+
+                var fb = new Facebook.FacebookClient(context.Client.AccessToken);
+                dynamic us = fb.Get("me/tagged");
                 return View(user);
             }
 

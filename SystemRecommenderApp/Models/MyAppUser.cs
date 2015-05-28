@@ -26,38 +26,15 @@ namespace SystemRecommenderApp.Models
         public FacebookGroupConnection<Movie> Movies { get; set; }
         public FacebookGroupConnection<Book> Books { get; set; }
         public FacebookGroupConnection<TV> Television { get; set; }
-        public FacebookGroupConnection<Bands> Music { get; set; } 
+        public FacebookGroupConnection<Bands> Music { get; set; }
 
-        public class Bands
+        [FacebookFieldModifier("limit(20)")]
+        public FacebookGroupConnection<Post> Feed { get; set; }
+
+        public class Post
         {
-            public string Name { get; set; }
             public string Id { get; set; }
-            public string Link { get; set; }
         }
-        public class Movie
-        {
-            public string Name { get; set; }
-            public string Id { get; set; }
-            public string Link { get; set; }
-        }
-        public class Like
-        {
-            public string Name { get; set; }
-            public string Category { get; set; }
-            public string Id { get; set; }
-            public string Link { get; set; }
-        }
-        public class Book
-        {
-            public string Name { get; set; }
-            public string Id { get; set; }
-            public string Link { get; set; }
-        }
-        public class TV
-        {
-            public string Name { get; set; }
-            public string Id { get; set; }
-            public string Link { get; set; }
-        }
+
     }
 }
