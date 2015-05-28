@@ -68,26 +68,39 @@
     $("#btnSearch").click(function () {
         recommendationPanel.innerHTML = '';
         var category = $('.btn-select').text();
-        switch(category) {
-            @*case "Filmovi ": 
-                @foreach (var item in Model.Movies.Data) {
-                    @:dispFunc('@item.Name', '@item.Link');
+        switch (category) {
+            case "Filmovi ":
+                @if (Model.Movies != null && Model.Movies.Data != null && Model.Movies.Data.Count > 0)
+                {
+                    foreach (var item in Model.Movies.Data) {
+                        @:dispFunc('@item.Name', '@item.Link');
+                                    }
                 }
-                break;*@
+                break;
             case "TV serija ":
-                @foreach (var item in Model.Television.Data) {
-                    @:dispFunc('@item.Name', '@item.Link');
+                @if (Model.Television != null && Model.Television.Data != null && Model.Television.Data.Count > 0)
+                {
+                    foreach (var item in Model.Television.Data) {
+                        @:dispFunc('@item.Name', '@item.Link');
+                                    }
                 }
                 break;
             case "Knjige ":
-                @foreach (var item in Model.Books.Data) {
-                    @:dispFunc('@item.Name', '@item.Link');
+                @if (Model.Books != null && Model.Books.Data != null && Model.Books.Data.Count > 0)
+                {
+                    foreach (var item in Model.Books.Data)
+                    {
+                        @:dispFunc('@item.Name', '@item.Link');
+                                    }
                 }
                 break;
-            case "Muzika ":
-                @foreach (var item in Model.Music.Data) {
-                    @:dispFunc('@item.Name', '@item.Link');
-                }
+                @if (Model.Music != null && Model.Music.Data != null && Model.Music.Data.Count > 0)
+        {
+                    foreach (var item in Model.Music.Data)
+            {
+                @:dispFunc('@item.Name', '@item.Link');
+                            }
+        }
                 break;
 
         }
