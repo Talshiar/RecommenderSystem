@@ -70,8 +70,8 @@
     $("#btnSearch").click(function () {
         recommendationPanel.innerHTML = '';
         var category = $('.btn-select').text();
-        @*switch (category) {
-            case "Filmovi ":
+        switch (category) {
+            @*case "Filmovi ":
                 @if (Model.Friends.Data != null && Model.Friends.Data != null && Model.Friends.Data.Count > 0)
                 {
                     foreach (var f in Model.Friends.Data)
@@ -90,7 +90,7 @@
                         }
                     }
                 }
-                break;
+                break;*@
             case "TV serija ":
                 @if (Model.Friends.Data != null && Model.Friends.Data != null && Model.Friends.Data.Count > 0)
                 {
@@ -151,7 +151,7 @@
                     }
                 }
                 break;
-        }*@
+        }
     });
 
 </script>
