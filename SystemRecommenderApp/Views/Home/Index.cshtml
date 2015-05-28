@@ -68,17 +68,17 @@
     $("#btnSearch").click(function () {
         recommendationPanel.innerHTML = '';
         var category = $('.btn-select').text();
-        switch(category) {
+        @*switch(category) {
             case "Filmovi ": 
                 @foreach (var item in Model.Movies.Data) {
                     @:dispFunc('@item.Name', '@item.Link');
                 }
                 break;
-            @*case "TV serija ":
+            case "TV serija ":
                 @foreach (var item in Model.Television.Data) {
                     @:dispFunc('@item.Name', '@item.Link');
                 }
-                break;*@
+                break;
             case "Knjige ":
                 @foreach (var item in Model.Books.Data) {
                     @:dispFunc('@item.Name', '@item.Link');
@@ -90,7 +90,7 @@
                 }
                 break;
 
-        }
+        }*@
     });
 
 </script>

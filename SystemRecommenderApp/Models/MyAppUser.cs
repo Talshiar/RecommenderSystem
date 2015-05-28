@@ -50,10 +50,10 @@ namespace SystemRecommenderApp.Models
 
         [FacebookFieldModifier("limit(16)")]
         public FacebookGroupConnection<FacebookPhoto> Photos { get; set; }
-        public FacebookGroupConnection<Movie> Movies { get; set; }
-        public FacebookGroupConnection<Book> Books { get; set; }
-        //public FacebookGroupConnection<TV> Television { get; set; }
-        public FacebookGroupConnection<Bands> Music { get; set; }
+        //public FacebookGroupConnection<Movie> Movies { get; set; }
+        //public FacebookGroupConnection<Book> Books { get; set; }
+        ////public FacebookGroupConnection<TV> Television { get; set; }
+        //public FacebookGroupConnection<Bands> Music { get; set; }
 
     }
 }
