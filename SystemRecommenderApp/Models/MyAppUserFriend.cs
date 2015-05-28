@@ -17,7 +17,7 @@ namespace SystemRecommenderApp.Models
         public FacebookConnection<FacebookPicture> Picture { get; set; }
         public FacebookGroupConnection<Movie> Movies { get; set; }
         public FacebookGroupConnection<Book> Books { get; set; }
-        //public FacebookGroupConnection<TV> Television { get; set; }
+        public FacebookGroupConnection<TV> Television { get; set; }
         public FacebookGroupConnection<Bands> Music { get; set; }
 
 
