@@ -76,9 +76,9 @@
                 {
                     foreach (var f in Model.Friends.Data)
                     {
-                        @*if (f.Id == Model.GetFriend())
+                        if (f.Id == Model.GetFriend())
                         {
-                            int i = 0;
+                            @*int i = 0;
                             int ran = rnd.Next(0, f.Movies.Data.Count);
                             foreach (var item in f.Movies.Data) 
                             {
@@ -86,8 +86,8 @@
                                     @:dispFunc('@item.Name', '@item.Link');
                                     }
                                 i++;
-                            }
-                        }*@
+                            }*@
+                        }
                     }
                 }
                 break;
