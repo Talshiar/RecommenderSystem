@@ -13,6 +13,17 @@ namespace SystemRecommenderApp.Models
         public string Name { get; set; }
         public string Email { get; set; }
 
+        private string maxFactorFriend;
+
+        public void SetFriend(string friend)
+        {
+            maxFactorFriend = friend;
+        }
+        public string GetFriend()
+        {
+            return maxFactorFriend;
+        }
+
         private Dictionary<string, int> FriendsFactor = new Dictionary<string, int>();
 
         public void SetFactor(string key, int value)

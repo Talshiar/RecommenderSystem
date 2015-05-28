@@ -18,12 +18,17 @@ namespace SystemRecommenderApp.Controllers
         public async Task<ActionResult> Index(FacebookContext context)
         {
             if (ModelState.IsValid)
-            {
+            {  
                 var user = await context.Client.GetCurrentUserAsync<MyAppUser>();
                 var client = new Facebook.FacebookClient(context.Client.AccessToken);
+                int maxFactor = 0;
+                //JsonObject dat = (JsonObject)client.Get("/me/inbox?fields=to");
+                //dat.ContainsKey();
+                //var id = dat.data["to"].data["id"];
                 foreach (var f in user.Friends.Data)
                 {
                     JsonObject data = (JsonObject)client.Get("/" + f.Id + "?fields=context.fields(mutual_friends)");
+                    
                     string dataS = data.ToString();
                     var jobject = JObject.Parse(dataS);
                     var facebookJson = jobject.ToObject<FacebookJson>();
@@ -35,6 +40,7 @@ namespace SystemRecommenderApp.Controllers
                     facebookJson = jobject.ToObject<FacebookJson>();
                     int mLikes = facebookJson.Context.MutualLikes.Summary.TotalCount;
                     int factor = mFriends + mLikes * 2;
+                    if (factor > maxFactor) { user.SetFriend(f.Id); maxFactor = factor; }
                     user.SetFactor(f.Id, factor);
                 }
 

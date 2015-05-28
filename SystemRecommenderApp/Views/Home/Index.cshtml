@@ -1,8 +1,10 @@
 ﻿@using SystemRecommenderApp.Models
 @using Microsoft.AspNet.Facebook.Models
+@using System;
 @model MyAppUser
 @{
     ViewBag.Title = "Home Page";
+    Random rnd = new Random();
 }
 
 <article id="content">
@@ -31,7 +33,7 @@
         }
     </div>
     <div class="right">
-        <p>Odaberite vrstu sadržaja za preporučivanje:</p>
+        <p>Odaberite vrstu sadržaja za preporučivanje. Preporuke se pronalaze na temelju faktora zajedničkih interesa.</p>
         <form>
             <div class="well carousel-search hidden-sm">
                 <div class="btn-group">
@@ -62,7 +64,7 @@
     });
 
     function dispFunc(name, link) {
-        recommendationPanel.innerHTML += '<a href="' + link + '">' + name + '</a><br/>';
+        recommendationPanel.innerHTML += 'Preporučamo vam: ' + '<a href="' + link + '">' + name + '</a><br/>';
     }
 
     $("#btnSearch").click(function () {
@@ -70,37 +72,90 @@
         var category = $('.btn-select').text();
         switch (category) {
             case "Filmovi ":
-                @if (Model.Movies != null && Model.Movies.Data != null && Model.Movies.Data.Count > 0)
+                @*@if (Model.Movies != null && Model.Movies.Data != null && Model.Movies.Data.Count > 0)
                 {
                     foreach (var item in Model.Movies.Data) {
                         @:dispFunc('@item.Name', '@item.Link');
                                     }
+                }*@
+                @if (Model.Friends.Data != null && Model.Friends.Data != null && Model.Friends.Data.Count > 0)
+                {
+                    foreach (var f in Model.Friends.Data)
+                    {
+                        if (f.Id == Model.GetFriend())
+                        {
+                            int i = 0;
+                            int ran = rnd.Next(0, f.Movies.Data.Count);
+                            foreach (var item in f.Movies.Data) 
+                            {
+                                if (i == ran) {                                 
+                                    @:dispFunc('@item.Name', '@item.Link');
+                                    }
+                                i++;
+                            }
+                        }
+                    }
                 }
                 break;
             case "TV serija ":
-                @if (Model.Television != null && Model.Television.Data != null && Model.Television.Data.Count > 0)
+                @if (Model.Friends.Data != null && Model.Friends.Data != null && Model.Friends.Data.Count > 0)
                 {
-                    foreach (var item in Model.Television.Data) {
-                        @:dispFunc('@item.Name', '@item.Link');
-                                    }
+                    foreach (var f in Model.Friends.Data)
+                    {
+                        if (f.Id == Model.GetFriend())
+                        {
+                            int i = 0;
+                            int ran = rnd.Next(0, f.Television.Data.Count);
+                            foreach (var item in f.Television.Data) 
+                            {
+                                if (i == ran) {                                 
+                                    @:dispFunc('@item.Name', '@item.Link');
+                                }
+                                i++;
+                            }
+                        }
+                    }
                 }
                 break;
             case "Knjige ":
-                @if (Model.Books != null && Model.Books.Data != null && Model.Books.Data.Count > 0)
+                @if (Model.Friends.Data != null && Model.Friends.Data != null && Model.Friends.Data.Count > 0)
                 {
-                    foreach (var item in Model.Books.Data)
+                    foreach (var f in Model.Friends.Data)
                     {
-                        @:dispFunc('@item.Name', '@item.Link');
-                                    }
+                        if (f.Id == Model.GetFriend())
+                        {
+                            int i = 0;
+                            int ran = rnd.Next(0, f.Books.Data.Count);
+                            foreach (var item in f.Books.Data) 
+                            {
+                                if (i == ran) {                                 
+                                    @:dispFunc('@item.Name', '@item.Link');
+                                }
+                                i++;
+                            }
+                        }
+                    }
                 }
                 break;
-                @if (Model.Music != null && Model.Music.Data != null && Model.Music.Data.Count > 0)
-        {
-                    foreach (var item in Model.Music.Data)
-            {
-                @:dispFunc('@item.Name', '@item.Link');
+            case "Muzika ":
+                @if (Model.Friends.Data != null && Model.Friends.Data != null && Model.Friends.Data.Count > 0)
+                {
+                    foreach (var f in Model.Friends.Data)
+                    {
+                        if (f.Id == Model.GetFriend())
+                        {
+                            int i = 0;
+                            int ran = rnd.Next(0, f.Music.Data.Count);
+                            foreach (var item in f.Music.Data) 
+                            {
+                                if (i == ran) {                                 
+                                    @:dispFunc('@item.Name', '@item.Link');
+                                }
+                                i++;
                             }
-        }
+                        }
+                    }
+                }
                 break;
 
         }
