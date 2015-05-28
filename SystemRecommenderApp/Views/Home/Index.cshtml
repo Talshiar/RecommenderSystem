@@ -71,12 +71,12 @@
         recommendationPanel.innerHTML = '';
         var category = $('.btn-select').text();
         switch (category) {
-            @*case "Filmovi ":
+            case "Filmovi ":
                 @if (Model.Friends.Data != null && Model.Friends.Data != null && Model.Friends.Data.Count > 0)
                 {
                     foreach (var f in Model.Friends.Data)
                     {
-                        if (f.Id == Model.GetFriend())
+                        @*if (f.Id == Model.GetFriend())
                         {
                             int i = 0;
                             int ran = rnd.Next(0, f.Movies.Data.Count);
@@ -87,11 +87,11 @@
                                     }
                                 i++;
                             }
-                        }
+                        }*@
                     }
                 }
-                break;*@
-            case "TV serija ":
+                break;
+            @*case "TV serija ":
                 @if (Model.Friends.Data != null && Model.Friends.Data != null && Model.Friends.Data.Count > 0)
                 {
                     foreach (var f in Model.Friends.Data)
@@ -151,7 +151,7 @@
                     }
                 }
                 break;
-        }
+        }*@
     });
 
 </script>
