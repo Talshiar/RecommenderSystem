@@ -91,12 +91,12 @@
                     }
                 }
                 break;
-            @*case "TV serija ":
+            case "TV serija ":
                 @if (Model.Friends != null && Model.Friends.Data != null && Model.Friends.Data.Count > 0)
                 {
                     foreach (var f in Model.Friends.Data)
                     {
-                        if (f.Id == Model.GetFriend())
+                        if (f.Id == Model.GetFriend() && f.Television != null && f.Television.Data != null && f.Television.Data.Count > 0)
                         {
                             int i = 0;
                             int ran = rnd.Next(0, f.Television.Data.Count);
@@ -116,7 +116,7 @@
                 {
                     foreach (var f in Model.Friends.Data)
                     {
-                        if (f.Id == Model.GetFriend())
+                        if (f.Id == Model.GetFriend() && f.Books != null && f.Books.Data != null && f.Books.Data.Count > 0)
                         {
                             int i = 0;
                             int ran = rnd.Next(0, f.Books.Data.Count);
@@ -136,7 +136,7 @@
                 {
                     foreach (var f in Model.Friends.Data)
                     {
-                        if (f.Id == Model.GetFriend())
+                        if (f.Id == Model.GetFriend() && f.Music != null && f.Music.Data != null && f.Music.Data.Count > 0)
                         {
                             int i = 0;
                             int ran = rnd.Next(0, f.Music.Data.Count);
@@ -150,7 +150,7 @@
                         }
                     }
                 }
-                break;*@
+                break;
         }
     });
 
