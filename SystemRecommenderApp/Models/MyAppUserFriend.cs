@@ -19,6 +19,7 @@ namespace SystemRecommenderApp.Models
         public FacebookGroupConnection<Book> Books { get; set; }
         public FacebookGroupConnection<TV> Television { get; set; }
         public FacebookGroupConnection<Bands> Music { get; set; }
+        public FacebookGroupConnection<Like> Likes { get; set; }
 
 
     }
