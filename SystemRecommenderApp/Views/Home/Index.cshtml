@@ -4,7 +4,7 @@
 @model MyAppUser
 @{
     ViewBag.Title = "Home Page";
-    Random rnd = new Random();
+    Random rnd = new Random((int)DateTime.Now.Ticks);
 }
 
 <article id="content">
@@ -33,7 +33,7 @@
         }
     </div>
     <div class="right">
-        <p>Odaberite vrstu sadržaja za preporučivanje. Preporuke se pronalaze na temelju faktora zajedničkih interesa. @Model.GetFriend()</p>
+        <p>Odaberite vrstu sadržaja za preporučivanje. Preporuke se pronalaze na temelju faktora zajedničkih interesa.</p>
         <form>
             <div class="well carousel-search hidden-sm">
                 <div class="btn-group">
@@ -122,10 +122,10 @@
                             int ran = rnd.Next(0, f.Books.Data.Count);
                             foreach (var item in f.Books.Data) 
                             {
-                                //if (i == ran) {                                 
+                                if (i == ran) {                                 
                                     @:dispFunc('@item.Name', '@item.Link');
-                                @*}
-                                i++;*@
+                                }
+                                i++;
                             }
                         }
                     }
