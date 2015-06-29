@@ -21,7 +21,7 @@ namespace SystemRecommenderApp.Controllers
             {  
                 var user = await context.Client.GetCurrentUserAsync<MyAppUser>();
                 var client = new Facebook.FacebookClient(context.Client.AccessToken);
-                int maxFactor = 0;
+                double maxFactor = 0;
                 //slike
                 JsonObject data = (JsonObject)client.Get("me/photos?fields=tags{name}&limit=300");
                 string dataString = data.ToString();
@@ -81,11 +81,11 @@ namespace SystemRecommenderApp.Controllers
                     jobject = JObject.Parse(dataString);
                     facebookJson = jobject.ToObject<FacebookJson>();
                     int mLikes = facebookJson.Context.MutualLikes.Summary.TotalCount;
-                    int factor = mFriends + mLikes * 2;
+                    double factor = mFriends + mLikes * 2;
                     user.SetFactor(f.Id, factor);
-
+                    factor = user.GetFactor(f.Id);
                     //postavljanje prijatelja s najvecim faktorom
-                    if (user.GetFactor(f.Id) > maxFactor) { user.SetFriend(f.Id); maxFactor = factor; }
+                    if (factor > maxFactor) { user.SetFriend(f.Id); maxFactor = factor; }
 
                 }
 

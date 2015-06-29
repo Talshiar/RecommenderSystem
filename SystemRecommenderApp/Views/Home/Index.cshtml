@@ -82,13 +82,38 @@
                         {
                             int i = 0;
                             int ran = rnd.Next(0, f.Movies.Data.Count);
-                            foreach (var item in f.Movies.Data) 
+                            foreach (var item in f.Movies.Data)
                             {
-                                if (i == ran) {                                 
+                                if (i == ran) {
                                     @:dispFunc('@item.Name', '@item.Link', 'filmovi');
-                                    }
+                                                                                                    }
                                 i++;
                             }
+                            break;
+                        }
+                        else if (f.Id == Model.GetFriend())
+                        {
+                            MyAppUserFriend bf = f;
+                            double max = 0;
+                            double curr = 0;
+                            foreach (var fr in Model.Friends.Data)
+                            {
+                                curr = Model.GetFactor(fr.Id);
+                                if (curr > max && curr != Model.GetFactor(Model.GetFriend()) && fr.Movies.Data.Count > 0) {
+                                    max = curr;
+                                     bf = fr;
+                                }
+                            }
+                            int i = 0;
+                            int ran = rnd.Next(0, bf.Movies.Data.Count);
+                            foreach (var item in bf.Movies.Data)
+                            {
+                                if (i == ran) {
+                                    @:dispFunc('@item.Name', '@item.Link', 'filmovi');
+                                                                                    }
+                                i++;
+                            }
+                            break;
                         }
                     }
                 }
@@ -102,13 +127,39 @@
                         {
                             int i = 0;
                             int ran = rnd.Next(0, f.Television.Data.Count);
-                            foreach (var item in f.Television.Data) 
+                            foreach (var item in f.Television.Data)
                             {
-                                if (i == ran) {                                 
+                                if (i == ran) {
                                     @:dispFunc('@item.Name', '@item.Link', 'TV serije');
-                                }
+                                                                                                }
                                 i++;
                             }
+                            break;
+
+                        }
+                        else if (f.Id == Model.GetFriend())
+                        {
+                            MyAppUserFriend bf = f;
+                            double max = 0;
+                            double curr = 0;
+                            foreach (var fr in Model.Friends.Data)
+                            {
+                                curr = Model.GetFactor(fr.Id);
+                                if (curr > max && curr != Model.GetFactor(Model.GetFriend()) && fr.Television.Data.Count > 0) {
+                                    max = curr;
+                                     bf = fr;
+                                }
+                            }
+                            int i = 0;
+                            int ran = rnd.Next(0, bf.Television.Data.Count);
+                            foreach (var item in bf.Television.Data)
+                            {
+                                if (i == ran) {
+                                    @:dispFunc('@item.Name', '@item.Link', 'TV serije');
+                                                                    }
+                                i++;
+                            }
+                            break;
                         }
                     }
                 }
@@ -122,13 +173,40 @@
                         {
                             int i = 0;
                             int ran = rnd.Next(0, f.Books.Data.Count);
-                            foreach (var item in f.Books.Data) 
+                            foreach (var item in f.Books.Data)
                             {
-                                if (i == ran) {                                 
+                                if (i == ran) {
                                     @:dispFunc('@item.Name', '@item.Link', 'knjige');
-                                }
+                                                                                                }
                                 i++;
                             }
+                            break;
+
+                        }
+                        else if (f.Id == Model.GetFriend())
+                        {
+                            MyAppUserFriend bf = f;
+                            double max = 0;
+                            double curr = 0;
+                            foreach (var fr in Model.Friends.Data)
+                            {
+                                curr = Model.GetFactor(fr.Id);
+                                if (curr > max && curr != Model.GetFactor(Model.GetFriend()) && fr.Books.Data.Count > 0)
+                                {
+                                    max = curr;
+                                     bf = fr;
+                                }
+                            }
+                            int i = 0;
+                            int ran = rnd.Next(0, bf.Books.Data.Count);
+                            foreach (var item in bf.Books.Data)
+                            {
+                                if (i == ran) {
+                                    @:dispFunc('@item.Name', '@item.Link', 'knjige');
+                                                                    }
+                                i++;
+                            }
+                            break;
                         }
                     }
                 }
@@ -142,13 +220,40 @@
                         {
                             int i = 0;
                             int ran = rnd.Next(0, f.Music.Data.Count);
-                            foreach (var item in f.Music.Data) 
+                            foreach (var item in f.Music.Data)
                             {
-                                if (i == ran) {                                 
+                                if (i == ran) {
                                     @:dispFunc('@item.Name', '@item.Link', 'muzika');
-                                }
+                                                                                }
                                 i++;
                             }
+                            break;
+
+                        }
+                        else if (f.Id == Model.GetFriend())
+                        {
+                            MyAppUserFriend bf = f;
+                            double max = 0;
+                            double curr = 0;
+                            foreach (var fr in Model.Friends.Data)
+                            {
+                                curr = Model.GetFactor(fr.Id);
+                                if (curr > max && curr != Model.GetFactor(Model.GetFriend()) && fr.Music.Data.Count > 0)
+                                {
+                                    max = curr;
+                                     bf = fr;
+                                }
+                            }
+                            int i = 0;
+                            int ran = rnd.Next(0, bf.Music.Data.Count);
+                            foreach (var item in bf.Music.Data)
+                            {
+                                if (i == ran) {
+                                    @:dispFunc('@item.Name', '@item.Link', 'muzika');
+                                                    }
+                                i++;
+                            }
+                            break;
                         }
                     }
                 }
