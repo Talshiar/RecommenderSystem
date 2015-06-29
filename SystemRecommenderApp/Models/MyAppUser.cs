@@ -24,13 +24,13 @@ namespace SystemRecommenderApp.Models
             return maxFactorFriend;
         }
 
-        private Dictionary<string, int> FriendsFactor = new Dictionary<string, int>();
+        private Dictionary<string, double> FriendsFactor = new Dictionary<string, double>();
 
-        public void SetFactor(string key, int value)
+        public void SetFactor(string key, double value)
         {
             if (FriendsFactor.ContainsKey(key))
             {
-                FriendsFactor[key] = value;
+                FriendsFactor[key] += value;
             }
             else
             {
@@ -38,9 +38,9 @@ namespace SystemRecommenderApp.Models
             }
         }
 
-        public int GetFactor(string key)
+        public double GetFactor(string key)
         {
-            int result = 0;
+            double result = 0;
 
             if (FriendsFactor.ContainsKey(key))
             {
