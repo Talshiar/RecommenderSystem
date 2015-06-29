@@ -82,8 +82,11 @@ namespace SystemRecommenderApp.Controllers
                     facebookJson = jobject.ToObject<FacebookJson>();
                     int mLikes = facebookJson.Context.MutualLikes.Summary.TotalCount;
                     int factor = mFriends + mLikes * 2;
-                    if (factor > maxFactor) { user.SetFriend(f.Id); maxFactor = factor; }
                     user.SetFactor(f.Id, factor);
+
+                    //postavljanje prijatelja s najvecim faktorom
+                    if (user.GetFactor(f.Id) > maxFactor) { user.SetFriend(f.Id); maxFactor = factor; }
+
                 }
 
           
