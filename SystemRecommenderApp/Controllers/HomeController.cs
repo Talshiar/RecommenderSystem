@@ -34,10 +34,7 @@ namespace SystemRecommenderApp.Controllers
                         id = outer.id;
                         foreach (var f in user.Friends.Data)
                         {
-                            if (id == f.Id)
-                            {
-                                user.SetFactor(f.Id, 1);
-                            }
+                            if (id == f.Id) user.SetFactor(f.Id, 1);
                         }
                     }
 

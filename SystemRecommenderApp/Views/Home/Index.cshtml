@@ -3,14 +3,14 @@
 @using System;
 @model MyAppUser
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Preporučiteljski sustav";
     Random rnd = new Random();
 }
 
 <article id="content">
     <h4>Zatražite preporuke sadržaja po kategorijama. Preporuke su bazirane na interesima vaših najboljih prijatelja na Facebook-u.</h4>
     <div class="left">
-        <p>Prijatelji koji koriste aplikaciju, pored imena se nalazi procjenjeni faktor zajedničkih interesa:</p>
+        Prijatelji koji koriste aplikaciju, pored imena se nalazi procjenjeni faktor zajedničkih interesa: <br/>
         
         @if (Model.Friends != null && Model.Friends.Data != null && Model.Friends.Data.Count > 0)
         {
@@ -33,7 +33,7 @@
         }
     </div>
     <div class="right">
-        <p>Odaberite vrstu sadržaja za preporučivanje. Preporuke se pronalaze na temelju faktora zajedničkih interesa.</p>
+        Odaberite vrstu sadržaja za preporučivanje. Preporuke se pronalaze na temelju faktora zajedničkih interesa. <br/>
         <form>
             <div class="well carousel-search hidden-sm">
                 <div class="btn-group">
@@ -46,7 +46,7 @@
                     </ul>
                 </div>
                 <div class="btn-group">
-                    <button type="button" id="btnSearch" class="btn btn-primary">Pokreni</button> 
+                    <button type="button" id="btnSearch" class="btn btn-primary">Preporuči</button> 
                 </div>
             </div>
         </form>
@@ -63,8 +63,10 @@
         $(this).parents('.btn-group').find('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
     });
 
-    function dispFunc(name, link) {
-        recommendationPanel.innerHTML += 'Preporučamo Vam: ' + '<a href="' + link + '">' + name + '</a><br/><br/>' + 'Za više informacija otvorite poveznicu.<br/>Za novu preporuku iz iste kategorije stisnite refresh na vrhu stranice i ponovno pokrenite.';
+    function dispFunc(name, link, cat) {
+        recommendationPanel.innerHTML += 'Preporuke su temeljene na ukupnom faktoru zajedničkih fotografija, prijatelja, sviđanja te svih taggiranih objava.<br/><br/>'
+        recommendationPanel.innerHTML += 'Iz kategorije ' + cat;
+        recommendationPanel.innerHTML += ' preporučamo Vam: ' + '<a href="' + link + '">' + name + '</a><br/><br/>' + 'Za više informacija otvorite poveznicu.<br/>Za novu preporuku iz iste kategorije stisnite refresh na vrhu stranice i ponovno pokrenite.';
     }
 
     $("#btnSearch").click(function () {
@@ -83,7 +85,7 @@
                             foreach (var item in f.Movies.Data) 
                             {
                                 if (i == ran) {                                 
-                                    @:dispFunc('@item.Name', '@item.Link');
+                                    @:dispFunc('@item.Name', '@item.Link', 'filmovi');
                                     }
                                 i++;
                             }
@@ -103,7 +105,7 @@
                             foreach (var item in f.Television.Data) 
                             {
                                 if (i == ran) {                                 
-                                    @:dispFunc('@item.Name', '@item.Link');
+                                    @:dispFunc('@item.Name', '@item.Link', 'TV serije');
                                 }
                                 i++;
                             }
@@ -123,7 +125,7 @@
                             foreach (var item in f.Books.Data) 
                             {
                                 if (i == ran) {                                 
-                                    @:dispFunc('@item.Name', '@item.Link');
+                                    @:dispFunc('@item.Name', '@item.Link', 'knjige');
                                 }
                                 i++;
                             }
@@ -143,7 +145,7 @@
                             foreach (var item in f.Music.Data) 
                             {
                                 if (i == ran) {                                 
-                                    @:dispFunc('@item.Name', '@item.Link');
+                                    @:dispFunc('@item.Name', '@item.Link', 'muzika');
                                 }
                                 i++;
                             }
