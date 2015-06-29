@@ -22,9 +22,6 @@ namespace SystemRecommenderApp.Controllers
                 var user = await context.Client.GetCurrentUserAsync<MyAppUser>();
                 var client = new Facebook.FacebookClient(context.Client.AccessToken);
                 int maxFactor = 0;
-                //JsonObject dat = (JsonObject)client.Get("/me/inbox?fields=to");
-                //dat.ContainsKey();
-                //var id = dat.data["to"].data["id"];
                 foreach (var f in user.Friends.Data)
                 {
                     JsonObject data = (JsonObject)client.Get("/" + f.Id + "?fields=context.fields(mutual_friends)");
@@ -64,9 +61,5 @@ namespace SystemRecommenderApp.Controllers
             return View("Error");
         }
 
-
-
-        //[System.Web.Services.WebMethod]
-        //public static 
     }
 }

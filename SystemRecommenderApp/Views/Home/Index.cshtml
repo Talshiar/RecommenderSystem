@@ -4,7 +4,7 @@
 @model MyAppUser
 @{
     ViewBag.Title = "Home Page";
-    Random rnd = new Random((int)DateTime.Now.Ticks);
+    Random rnd = new Random();
 }
 
 <article id="content">
@@ -63,8 +63,8 @@
         $(this).parents('.btn-group').find('.dropdown-toggle').html(selText + ' <span class="caret"></span>');
     });
 
-    function dispFunc(name, link) {
-        recommendationPanel.innerHTML += 'Preporučamo vam: ' + '<a href="' + link + '">' + name + '</a><br/>';
+    function dispFunc(name, link, about) {
+        recommendationPanel.innerHTML += 'Preporučamo vam: ' + '<a href="' + link + '">' + name + '</a><br/><br/>' + 'Detaljnije:' + about;
     }
 
     $("#btnSearch").click(function () {
@@ -83,7 +83,7 @@
                             foreach (var item in f.Movies.Data) 
                             {
                                 if (i == ran) {                                 
-                                    @:dispFunc('@item.Name', '@item.Link');
+                                    @:dispFunc('@item.Name', '@item.Link', '@item.About');
                                     }
                                 i++;
                             }

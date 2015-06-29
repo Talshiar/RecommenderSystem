@@ -42,5 +42,24 @@ namespace SystemRecommenderApp.Models
         public Context Context { get; set; }
         [JsonProperty("id")]
         public string Id { get; set; }
+        [JsonProperty("data")]
+        public Data Data { get; set; }
     }
+    public class Data
+    {
+        [JsonProperty("to")]
+        public To To { get; set; }
+        [JsonProperty("id")]
+        public string Id { get; set; }
+        [JsonProperty("updated_time")]
+        public DateTime Updated_Time { get; set; }
+        [JsonProperty("name")]
+        public string Name { get; set; }
+    }
+    public class To
+    {
+        [JsonProperty("data")]
+        public List<object> Data { get; set; }
+    }
+
 }
